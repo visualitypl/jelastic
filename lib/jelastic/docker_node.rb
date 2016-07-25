@@ -31,7 +31,7 @@ module Jelastic
       @group = 'cache'
     end
 
-    def as_extra_layaer
+    def as_extra_layer
       @group = nil
     end
 
