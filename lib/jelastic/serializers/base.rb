@@ -9,7 +9,7 @@ module Jelastic
         hash.each do |key, value|
           if value.respond_to?(:to_hash) && value.length > 0
             new_hash[key] = clean(value)
-          elsif value.respond_to?(:to_ary)
+          elsif value.respond_to?(:to_ary) && value[0].respond_to?(:to_hash)
             new_hash[key] = []
             value.each do |v|
               new_hash[key] << clean(v)
