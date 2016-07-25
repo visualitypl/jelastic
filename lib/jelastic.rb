@@ -1,0 +1,5 @@
+require 'jelastic/version'
+require 'jelastic/client'
+require 'jelastic/environment'
+require 'jelastic/serializers/base'
+require 'jelastic/serializers/environment'
