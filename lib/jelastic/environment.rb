@@ -1,5 +1,6 @@
 require 'jelastic/node'
 require 'jelastic/docker_node'
+require 'securerandom'
 
 module Jelastic
   class Environment
@@ -16,6 +17,8 @@ module Jelastic
       environment.nodes = []
 
       yield(environment) if block_given?
+
+      environment.action_key ||= SecureRandom.hex
 
       serialized_env = Serializers::Environment.new(environment).serialize
       client.create_environment(serialized_env)

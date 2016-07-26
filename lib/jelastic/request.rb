@@ -13,12 +13,10 @@ class Request
     @path   = build_uri_path(path)
     @params = if client.authorized?
       params.merge(
-        appid:   client.appid,
         session: client.session,
       )
     else
       params.merge(
-        appid:    client.appid,
         login:    client.login,
         password: client.password
       )
