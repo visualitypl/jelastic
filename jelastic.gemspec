@@ -6,11 +6,12 @@ require 'jelastic/version'
 Gem::Specification.new do |spec|
   spec.name          = 'jelastic'
   spec.version       = Jelastic::VERSION
+  spec.license       = 'MIT'
   spec.authors       = ['Marcin Prokop']
-  spec.email         = ['marcin@prokop.co']
+  spec.email         = ['m.prokop@visuality.pl']
 
   spec.summary       = %q{Ruby wrapper for Jelastic API}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = 'https://github.com/visualitypl/jelastic'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
