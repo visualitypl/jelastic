@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe Jelastic::Serializers::Environment do
   it 'converts to hash' do
-    environment = Jelastic::Environment.create do |env|
+    client = instance_double('Client')
+    allow(client).to receive(:create_environment).and_return(true)
+
+    environment = Jelastic::Environment.create(client) do |env|
       env.action_key = 'asdasd'
       env.region = 'Europe'
       env.with_high_availability
@@ -21,7 +24,7 @@ describe Jelastic::Serializers::Environment do
         node.as_application_server
         node.image = 'nginx'
         node.set_registry 'jan', 'secret', 'registry.com'
-        node.links = ['redis:redis']
+        node.links = ['redis:redis', 'postgres:db']
         node.envs = {'foo' => 'bar'}
       end
     end
@@ -48,7 +51,8 @@ describe Jelastic::Serializers::Environment do
           nodeType: 'docker',
           docker: {
             cmd: 'start.sh',
-            links: ['redis:redis'],
+            image: 'nginx',
+            links: ['redis:redis', 'postgres:db'],
             env: { 'foo' => 'bar' },
             registry: { user: 'jan', password: 'secret', url: 'registry.com' },
             nodeGroup: 'cp'

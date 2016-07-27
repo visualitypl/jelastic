@@ -20,18 +20,18 @@ module Jelastic
       yield(self) if block_given?
     end
 
-    def authorized?
+    def authenticated?
       !user.nil?
     end
 
-    def authorize
+    def authenticate
       @user = User.new(signin)
 
       nil
     end
 
     def logout
-      if authorized?
+      if authenticated?
         signout
         @user = nil
       end

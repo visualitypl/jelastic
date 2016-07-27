@@ -6,7 +6,7 @@ module Jelastic
   class Environment
     attr_accessor :action_key, :region, :engine, :display_name,
       :ssl, :short_domain, :nodes, :ssl, :high_availability
-    attr_reader :client
+    attr_reader :client, :response
 
     class << self
       private :new
@@ -16,12 +16,16 @@ module Jelastic
       environment = allocate
       environment.nodes = []
 
-      yield(environment) if block_given?
+      yield(environment)
 
       environment.action_key ||= SecureRandom.hex
 
       serialized_env = Serializers::Environment.new(environment).serialize
-      client.create_environment(serialized_env)
+
+      response = client.create_environment(serialized_env)
+      environment.instance_variable_set('@response', response)
+
+      environment
     end
 
     def add_node

@@ -34,5 +34,9 @@ module REST
         { envname: env_name, nodeId: node_id, data: data }
       )
     end
+
+    def get_environments
+      send_request_with_system_appid('environment/control/rest/getenvs')
+    end
   end
 end

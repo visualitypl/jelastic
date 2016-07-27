@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe Jelastic::Environment do
   it 'creates an environment with normal node' do
-    environment = Jelastic::Environment.create do |env|
-      env.action_key = 'asdasd'
+    client = instance_double('Client')
+    allow(client).to receive(:create_environment).and_return(true)
+
+    environment = Jelastic::Environment.create(client) do |env|
       env.region = 'Europe'
       env.with_high_availability
       env.engine = 'docker'
@@ -20,8 +22,9 @@ describe Jelastic::Environment do
       end
     end
 
+    puts environment
+
     expect(environment).to have_attributes(
-      action_key: 'asdasd',
       region: 'Europe',
       high_availability?: true,
       engine: 'docker',
@@ -29,6 +32,7 @@ describe Jelastic::Environment do
       ssl?: true,
       short_domain: 'foo-bar'
     )
+    expect(environment.action_key).not_to be_empty
     expect(environment.nodes.first.class).to eq(Jelastic::Node)
     expect(environment.nodes.first).to have_attributes(
       public_ip?: true,
@@ -40,7 +44,10 @@ describe Jelastic::Environment do
   end
 
   it 'creates an environment with docker node' do
-    environment = Jelastic::Environment.create do |env|
+    client = instance_double('Client')
+    allow(client).to receive(:create_environment).and_return(true)
+
+    environment = Jelastic::Environment.create(client) do |env|
       env.add_docker_node do |node|
         node.with_public_ip
         node.count = 1
@@ -57,6 +64,7 @@ describe Jelastic::Environment do
     expect(environment.nodes.first).to have_attributes(
       public_ip?: true,
       count: 1,
+      image: 'nginx',
       fixed_cloudlets: 1,
       flexible_cloudlets: 2,
       type: 'docker',
