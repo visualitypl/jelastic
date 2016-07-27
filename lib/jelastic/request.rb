@@ -11,7 +11,7 @@ class Request
   def initialize(client, path, params = {})
     @client = client
     @path   = build_uri_path(path)
-    @params = if client.authenticate?
+    @params = if client.authenticated?
       params.merge(
         session: client.session,
       )
