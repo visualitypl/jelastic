@@ -35,8 +35,26 @@ module REST
       )
     end
 
+    def get_environment(env_name)
+      send_request('environment/control/rest/getenvinfo', { envname: env_name })
+    end
+
     def get_environments
       send_request_with_system_appid('environment/control/rest/getenvs')
+    end
+
+    def redeploy_containers_by_group(env_name:, node_group:, tag:, sequential: false, use_existing_volumes: false)
+      send_request(
+        'environment/control/rest/redeploycontainersbygroup',
+        { envname: env_name, nodeGroup: node_group, tag: tag, sequential: sequential, useExistingVolumes: use_existing_volumes }
+      )
+    end
+
+    def redeploy_container_by_id(env_name:, node_id:, tag:, use_existing_volumes: false)
+      send_request(
+        'environment/control/rest/redeploycontainerbyid',
+        { envname: env_name, nodeId: node_id, tag: tag, useExistingVolumes: use_existing_volumes }
+      )
     end
   end
 end
