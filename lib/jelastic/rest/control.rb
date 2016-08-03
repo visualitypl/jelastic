@@ -35,6 +35,13 @@ module REST
       )
     end
 
+    def get_docker_env_vars(env_name:, node_id:)
+      send_request(
+        'environment/control/rest/getdockerenvvars',
+        { envname: env_name, nodeId: node_id }
+      )
+    end
+
     def get_environment(env_name)
       send_request('environment/control/rest/getenvinfo', { envname: env_name })
     end
