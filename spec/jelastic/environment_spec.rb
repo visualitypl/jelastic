@@ -22,8 +22,6 @@ describe Jelastic::Environment do
       end
     end
 
-    puts environment
-
     expect(environment).to have_attributes(
       region: 'Europe',
       high_availability?: true,

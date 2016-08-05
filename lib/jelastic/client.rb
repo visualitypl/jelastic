@@ -1,5 +1,5 @@
-require 'jelastic/rest/api.rb'
-require 'jelastic/user.rb'
+require 'jelastic/rest/api'
+require 'jelastic/user'
 require 'forwardable'
 
 module Jelastic
