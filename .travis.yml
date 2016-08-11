@@ -1,5 +1,18 @@
-sudo: false
 language: ruby
+
 rvm:
-  - 2.3.0
-before_install: gem install bundler -v 1.12.5
+  - 2.0.0
+  - 2.1
+  - 2.2
+  - jruby-9.1.1.0
+  - jruby-head
+  - rbx-2
+  - ruby-head
+
+sudo: false
+
+bundler_args: --without development --retry=3 --jobs=3
+
+env:
+  global:
+    - JRUBY_OPTS="$JRUBY_OPTS --debug"
