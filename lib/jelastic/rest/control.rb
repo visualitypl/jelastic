@@ -28,7 +28,9 @@ module REST
       )
     end
 
-    def set_docker_env_vars(env_name:, node_id:, data:)
+    def set_docker_env_vars(env_name:, node_id:, envs:)
+      data = to_json(params, :envs)
+
       send_request(
         'environment/control/rest/setdockerenvvars',
         { envname: env_name, nodeId: node_id, data: data }
