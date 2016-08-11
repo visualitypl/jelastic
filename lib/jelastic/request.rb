@@ -1,6 +1,6 @@
 require 'net/http'
 require 'json'
-require 'jelastic/request_error.rb'
+require 'jelastic/request_error'
 
 module Jelastic
   class Request
