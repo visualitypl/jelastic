@@ -5,7 +5,7 @@ require 'jelastic/request_error'
 module Jelastic
   class Request
     API_URL = 'https://app.jelastic.dogado.eu/1.0/'.freeze
-    TIMEOUT = 300
+    TIMEOUT = 1200
 
     attr_reader :client, :path, :params
 
