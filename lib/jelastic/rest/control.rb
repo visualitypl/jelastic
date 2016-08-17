@@ -30,7 +30,7 @@ module Jelastic
       end
 
       def set_docker_env_vars(env_name:, node_id:, envs:)
-        data = to_json(params, :envs)
+        data = envs.to_json
 
         send_request(
           'environment/control/rest/setdockerenvvars',
