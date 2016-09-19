@@ -1,5 +1,5 @@
 # Jelastic
-[![Build Status](https://travis-ci.org/visualitypl/jelastic.svg?branch=master)](https://travis-ci.org/visualitypl/jelastic) [![Code Climate](https://codeclimate.com/github/visualitypl/jelastic/badges/gpa.svg)](https://codeclimate.com/github/visualitypl/jelastic) [![Coverage Status](https://coveralls.io/repos/github/visualitypl/jelastic/badge.svg?branch=master)](https://coveralls.io/github/visualitypl/jelastic?branch=master)
+[![Gem Version](https://badge.fury.io/rb/jelastic.svg)](https://badge.fury.io/rb/jelastic) [![Build Status](https://travis-ci.org/visualitypl/jelastic.svg?branch=master)](https://travis-ci.org/visualitypl/jelastic) [![Code Climate](https://codeclimate.com/github/visualitypl/jelastic/badges/gpa.svg)](https://codeclimate.com/github/visualitypl/jelastic) [![Coverage Status](https://coveralls.io/repos/github/visualitypl/jelastic/badge.svg?branch=master)](https://coveralls.io/github/visualitypl/jelastic?branch=master)
 
 A Ruby wrapper for Jelastic API.
 
