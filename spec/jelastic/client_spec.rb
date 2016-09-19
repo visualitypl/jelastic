@@ -5,10 +5,12 @@ describe Jelastic::Client do
     client = Jelastic::Client.new do |config|
       config.login = 'foo'
       config.password = 'bar'
+      config.api_url = 'https://app.jelastic.dogado.eu/1.0/'
     end
 
     expect(client.login).to eq('foo')
     expect(client.password).to eq('bar')
+    expect(client.api_url).to eq('https://app.jelastic.dogado.eu/1.0/')
   end
 
   describe '#authenticate' do

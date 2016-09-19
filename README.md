@@ -18,13 +18,14 @@ And then execute:
 Or install it yourself as:
 
     $ gem install jelastic
-    
+
 ## Configuration
 
 ```ruby
 client = Jelastic::Client.new do |config|
   config.login    = 'LOGIN'
   config.password = 'PASSWORD'
+  config.api_url  = 'API URL HOST PROVIDER' # e.g. https://app.jelastic.dogado.eu/1.0/
 end
 ```
 

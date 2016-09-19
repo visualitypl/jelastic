@@ -4,7 +4,6 @@ require 'jelastic/request_error'
 
 module Jelastic
   class Request
-    API_URL = 'https://app.jelastic.dogado.eu/1.0/'.freeze
     TIMEOUT = 1200
 
     attr_reader :client, :path, :params
@@ -25,7 +24,7 @@ module Jelastic
     end
 
     def send
-      uri = URI.join(API_URL, path)
+      uri = URI.join(client.api_url, path)
       req = Net::HTTP::Post.new(uri.path)
       req.set_form_data(params)
 
