@@ -42,7 +42,7 @@ describe Jelastic::Request do
 
   context 'server returns response with result param != 0' do
     it 'raises an exception' do
-      client = instance_double('Client', session: 'secret', api_url: 'https://app.jelastic.dogado.eu/1.0/', authenticated?: true)
+      client = instance_double('Client', session: 'secret', api_url: 'https://app.jelastic.dogado.eu/1.0/', authenticated?: true, user_agent: '')
       response = double('response', body: '{ "result":1, "error":"Fatal error" }')
       allow_any_instance_of(Net::HTTP).to receive(:request).and_return(response)
 

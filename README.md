@@ -25,7 +25,9 @@ Or install it yourself as:
 client = Jelastic::Client.new do |config|
   config.login    = 'LOGIN'
   config.password = 'PASSWORD'
-  config.api_url  = 'API URL HOST PROVIDER' # e.g. https://app.jelastic.dogado.eu/1.0/
+  config.api_url  = 'API URL HOST PROVIDER' # e.g. https://app.j.layershift.co.uk/1.0/
+  # add unique id to have multiple connections from the same ip
+  config.user_agent  = nil # e.g. Task1-UniqueID1
 end
 ```
 
