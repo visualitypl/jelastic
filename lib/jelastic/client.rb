@@ -7,7 +7,7 @@ module Jelastic
     include REST::API
     extend Forwardable
 
-    attr_accessor :login, :password, :api_url
+    attr_accessor :login, :password, :api_url, :user_agent
     attr_reader :user
 
     def_delegator :user, :session

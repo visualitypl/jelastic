@@ -25,7 +25,7 @@ module Jelastic
 
     def send
       uri = URI.join(client.api_url, path)
-      req = Net::HTTP::Post.new(uri.path)
+      req = Net::HTTP::Post.new(uri.path, request_options)
       req.set_form_data(params)
 
       http = Net::HTTP.new(uri.host, uri.port)
@@ -53,6 +53,14 @@ module Jelastic
 
         new_path
       end.join('/')
+    end
+
+    def request_options
+      options = {}
+
+      options['User-Agent'] = client.user_agent unless client.user_agent.nil?
+
+      options
     end
   end
 end
