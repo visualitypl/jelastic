@@ -66,6 +66,13 @@ module Jelastic
           { envname: env_name, nodeId: node_id, tag: tag, useExistingVolumes: use_existing_volumes }
         )
       end
+      
+      def restart_container_by_id(env_name:, node_id:)
+        send_request(
+          'environment/control/rest/restartcontainerbyid',
+          { envname: env_name, nodeId: node_id }
+        )
+      end
     end
   end
 end
